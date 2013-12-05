@@ -1,4 +1,91 @@
+function wireEventHandlers()
+{
+    $(function () {
+        $('#nogables').click(function () {
+            IntersectGables({id: "nogables", type: "union", objects:[]});
+        });   
+    });
 
+    $(function () {
+        $('#onegable').click(function () {
+            IntersectGables({id: "onegable", type: "union", objects:[
+                {type: "Gable", options: {center: [0,0.5,0]}}
+            ]});
+        });   
+    });
+
+    $(function () {
+        $('#fourgables').click(function () {
+            IntersectGables({id: "fourgables", type: "union", objects:[
+                {type: "Gable", options: {}},
+                {type: "Gable", options: {center: [0,0.5,0]}},
+                {type: "Gable", options: {center: [0,1,0]}},
+                {type: "Gable", options: {center: [0,1.5,0]}},
+            ]});
+        });   
+    });
+
+    $(function () {
+        $('#thirtytwogables').click(function () {
+            IntersectGables({id: "thirtytwogables", type: "union", objects: MakeObjects(32, false, true) });
+        });   
+    });
+
+    $(function () {
+        $('#sixtyfourgables').click(function () {
+            IntersectGables({id: "sixtyfourgables", type: "union", objects: MakeObjects(64, true, true) });
+        });   
+    });
+
+    $(function () {
+        $('#onetwentyeightgables').click(function () {
+            IntersectGables({id: "onetwentyeightgables", type: "union", objects: MakeObjects(128, true, true) });
+        });   
+    });
+
+    $(function () {
+        $('#nogables_ww').click(function () {
+            myWorker.postMessage({id: "nogables_ww", type: "union", objects:[]});
+        });   
+    });
+
+    $(function () {
+        $('#onegable_ww').click(function () {
+            myWorker.postMessage({id: "onegable_ww", type: "union", objects:[
+                {type: "Gable", options: {center: [0,0.5,0]}}
+            ]});
+        });   
+    });
+
+    $(function () {
+        $('#fourgables_ww').click(function () {
+            myWorker.postMessage({id: "fourgables_ww", type: "union", objects:[
+                {type: "Gable", options: {}},
+                {type: "Gable", options: {center: [0,0.5,0]}},
+                {type: "Gable", options: {center: [0,1,0]}},
+                {type: "Gable", options: {center: [0,1.5,0]}},
+            ]});
+        });   
+    });
+
+    $(function () {
+        $('#thirtytwogables_ww').click(function () {
+            myWorker.postMessage({id: "thirtytwogables_ww", type: "union", objects: MakeObjects(32, false, true) });
+        });   
+    });
+
+    $(function () {
+        $('#sixtyfourgables_ww').click(function () {
+            myWorker.postMessage({id: "sixtyfourgables_ww", type: "union", objects: MakeObjects(64, true, true) });
+        });   
+    });
+
+    $(function () {
+        $('#onetwentyeightgables_ww').click(function () {
+            myWorker.postMessage({id: "onetwentyeightgables_ww", type: "union", objects: MakeObjects(128, true, true) });
+        });   
+    });
+}
 var IntersectGables = function(rawData) {
     var polyhedra = [],
     resultPolyhedron = [],
